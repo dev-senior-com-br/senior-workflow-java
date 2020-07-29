@@ -1,10 +1,22 @@
-package br.com.senior.core.workflow;
+package br.com.senior.platform.apps.workflow;
 
 import br.com.senior.core.authentication.AuthenticationClient;
 import br.com.senior.core.authentication.pojos.LoginInput;
 import br.com.senior.core.authentication.pojos.LoginOutput;
+import br.com.senior.core.base.Environment;
 import br.com.senior.core.base.ServiceException;
-import br.com.senior.core.workflow.pojos.*;
+import br.com.senior.platform.apps.workflow.pojos.CommitAttachmentInput;
+import br.com.senior.platform.apps.workflow.pojos.FlowExecutionData;
+import br.com.senior.platform.apps.workflow.pojos.LinkAttachmentsInput;
+import br.com.senior.platform.apps.workflow.pojos.NewAttachmentInput;
+import br.com.senior.platform.apps.workflow.pojos.NewAttachmentOutput;
+import br.com.senior.platform.apps.workflow.pojos.ResponseData;
+import br.com.senior.platform.apps.workflow.pojos.ResponsePendencyInput;
+import br.com.senior.platform.apps.workflow.pojos.ServiceFlowToken;
+import br.com.senior.platform.apps.workflow.pojos.StartProcessInput;
+
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,11 +24,18 @@ import org.junit.Test;
 public class WorkflowIT {
 
     private static WorkflowClient client;
+    private static Environment env;
 
     @BeforeClass
     public static void beforeClass() throws ServiceException {
+        env = Environment.PROD;
         String token = login().getJsonToken().getAccess_token();
-        client = new WorkflowClient(token);
+        client = new WorkflowClient(token, env);
+    }
+
+    protected static LoginOutput login() throws ServiceException {
+        LoginInput input = new LoginInput(System.getenv("SENIOR_USERNAME"), System.getenv("PASS"));
+        return new AuthenticationClient(env).login(input);
     }
 
     @Test
@@ -46,8 +65,19 @@ public class WorkflowIT {
         //o processInstanceId deve estar marcado como tratado
     }
 
-    protected static LoginOutput login() throws ServiceException {
-        LoginInput input = new LoginInput(System.getenv("SENIOR_USERNAME"), System.getenv("PASSWORD"));
-        return new AuthenticationClient().login(input);
+    @Test
+    public void testAttachment() throws ServiceException {
+        String fileName = "File.txt";
+        Long size = 100l;
+        NewAttachmentInput newAttachmentInput = new NewAttachmentInput(fileName, size);
+        NewAttachmentOutput newAttachmentOutput = client.newAttachment(newAttachmentInput);
+
+        String id = newAttachmentOutput.attachment.id;
+        client.commitAttachment(new CommitAttachmentInput(id));
+
+        LinkAttachmentsInput linkAttachmentsInput = new LinkAttachmentsInput();
+        linkAttachmentsInput.ids = List.of(id);
+        linkAttachmentsInput.processInstance = Long.valueOf(System.getenv("PROCESS_ID"));
+        client.linkAttachments(linkAttachmentsInput);
     }
 }

@@ -1,7 +1,12 @@
-package br.com.senior.core.workflow.pojos;
+package br.com.senior.platform.apps.workflow.pojos;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
 public class StartProcessInput {
-    
+
     /**
      * Quando o usuário quer definir o número da instância do processo.
      */
@@ -34,25 +39,9 @@ public class StartProcessInput {
      * Usuário solicitante
      */
     public String requester;
-    
-    public StartProcessInput() {
-    }
-    
-    /** 
-     * This constructor allows initialization of all fields, required and optional.
-     */
-    public StartProcessInput(Long processInstanceID, Long processId, Long processVersion, String businessData, FlowExecutionData flowExecutionData, String authorization, String title, String requester) {
-        this.processInstanceID = processInstanceID;
-        this.processId = processId;
-        this.processVersion = processVersion;
-        this.businessData = businessData;
-        this.flowExecutionData = flowExecutionData;
-        this.authorization = authorization;
-        this.title = title;
-        this.requester = requester;
-    }
-    /** 
-     * This convenience constructor allows initialization of all required fields.
+
+    /**
+     * Construtor para inicialização de todos os campos obrigatórios.
      */
     public StartProcessInput(Long processId, String businessData, FlowExecutionData flowExecutionData) {
         this.processId = processId;

@@ -1,4 +1,4 @@
-package br.com.senior.core.workflow.pojos;
+package br.com.senior.platform.apps.workflow.pojos;
 
 public class StartProcessOutput {
     
@@ -11,7 +11,7 @@ public class StartProcessOutput {
     }
     
     /** 
-     * This constructor allows initialization of all fields, required and optional.
+     * Construtor para inicialização de todos os campos obrigatórios.
      */
     public StartProcessOutput(Long processInstanceID) {
         this.processInstanceID = processInstanceID;
