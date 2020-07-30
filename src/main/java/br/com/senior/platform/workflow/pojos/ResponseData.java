@@ -1,4 +1,4 @@
-package br.com.senior.platform.apps.workflow.pojos;
+package br.com.senior.platform.workflow.pojos;
 
 /**
  * Representa a entrada de dados de uma ação de resposta de pendência

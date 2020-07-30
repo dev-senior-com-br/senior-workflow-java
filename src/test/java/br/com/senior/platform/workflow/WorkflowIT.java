@@ -1,19 +1,26 @@
-package br.com.senior.platform.apps.workflow;
+package br.com.senior.platform.workflow;
 
 import br.com.senior.core.authentication.AuthenticationClient;
 import br.com.senior.core.authentication.pojos.LoginInput;
 import br.com.senior.core.authentication.pojos.LoginOutput;
 import br.com.senior.core.base.Environment;
 import br.com.senior.core.base.ServiceException;
-import br.com.senior.platform.apps.workflow.pojos.CommitAttachmentInput;
-import br.com.senior.platform.apps.workflow.pojos.FlowExecutionData;
-import br.com.senior.platform.apps.workflow.pojos.LinkAttachmentsInput;
-import br.com.senior.platform.apps.workflow.pojos.NewAttachmentInput;
-import br.com.senior.platform.apps.workflow.pojos.NewAttachmentOutput;
-import br.com.senior.platform.apps.workflow.pojos.ResponseData;
-import br.com.senior.platform.apps.workflow.pojos.ResponsePendencyInput;
-import br.com.senior.platform.apps.workflow.pojos.ServiceFlowToken;
-import br.com.senior.platform.apps.workflow.pojos.StartProcessInput;
+import br.com.senior.platform.workflow.pojos.CommitAttachmentInput;
+import br.com.senior.platform.workflow.pojos.FlowExecutionData;
+import br.com.senior.platform.workflow.pojos.LinkAttachmentsInput;
+import br.com.senior.platform.workflow.pojos.NewAttachmentInput;
+import br.com.senior.platform.workflow.pojos.NewAttachmentOutput;
+import br.com.senior.platform.workflow.pojos.Order;
+import br.com.senior.platform.workflow.pojos.OrderDirection;
+import br.com.senior.platform.workflow.pojos.OrderField;
+import br.com.senior.platform.workflow.pojos.Pagination;
+import br.com.senior.platform.workflow.pojos.ResponseData;
+import br.com.senior.platform.workflow.pojos.ResponsePendencyInput;
+import br.com.senior.platform.workflow.pojos.SearchTasksFilter;
+import br.com.senior.platform.workflow.pojos.SearchTasksInput;
+import br.com.senior.platform.workflow.pojos.SearchTasksOutput;
+import br.com.senior.platform.workflow.pojos.ServiceFlowToken;
+import br.com.senior.platform.workflow.pojos.StartProcessInput;
 
 import java.util.List;
 
@@ -55,7 +62,6 @@ public class WorkflowIT {
         StartProcessInput input = new StartProcessInput(null, processId, null, businessDataStart, new FlowExecutionData(actionToExecuteStart, nextSubject), null, "nova solicitação", null);
         Long processInstanceId = client.startProcess(input);
         Assert.assertNotNull(processInstanceId);
-        System.out.println(processInstanceId);
 
         //Quando listagem ficar pronta, adicionar aqui a listagem verificando que o processinstanceId foi encontrado e mercado como pendente
 
@@ -67,10 +73,14 @@ public class WorkflowIT {
 
     @Test
     public void testAttachment() throws ServiceException {
-        String fileName = "File.txt";
-        Long size = 100l;
+        String fileName = "NomeExemplo.arq";
+        Long size = 10l;
         NewAttachmentInput newAttachmentInput = new NewAttachmentInput(fileName, size);
         NewAttachmentOutput newAttachmentOutput = client.newAttachment(newAttachmentInput);
+
+        Assert.assertNotNull(newAttachmentOutput);
+        Assert.assertNotNull(newAttachmentOutput.attachment);
+        Assert.assertNotNull(newAttachmentOutput.attachment.id);
 
         String id = newAttachmentOutput.attachment.id;
         client.commitAttachment(new CommitAttachmentInput(id));
@@ -79,5 +89,20 @@ public class WorkflowIT {
         linkAttachmentsInput.ids = List.of(id);
         linkAttachmentsInput.processInstance = Long.valueOf(System.getenv("PROCESS_ID"));
         client.linkAttachments(linkAttachmentsInput);
+    }
+
+    @Test
+    public void testTasks() throws ServiceException {
+        SearchTasksFilter filter = new SearchTasksFilter();
+
+        Pagination pagination = new Pagination();
+
+        List<Order> orders = List.of(new Order(OrderField.START_DATE, OrderDirection.ASC));
+
+        SearchTasksInput searchTasksInput = new SearchTasksInput(filter, pagination, orders);
+        SearchTasksOutput searchTasksOutput = client.searchTasks(searchTasksInput);
+
+        Assert.assertNotNull(searchTasksOutput);
+        Assert.assertNotNull(searchTasksOutput.tasks);
     }
 }

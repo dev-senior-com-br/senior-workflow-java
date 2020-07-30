@@ -1,15 +1,17 @@
-package br.com.senior.platform.apps.workflow;
+package br.com.senior.platform.workflow;
 
 import br.com.senior.core.base.BaseClient;
 import br.com.senior.core.base.Environment;
 import br.com.senior.core.base.ServiceException;
-import br.com.senior.platform.apps.workflow.pojos.CommitAttachmentInput;
-import br.com.senior.platform.apps.workflow.pojos.LinkAttachmentsInput;
-import br.com.senior.platform.apps.workflow.pojos.NewAttachmentInput;
-import br.com.senior.platform.apps.workflow.pojos.NewAttachmentOutput;
-import br.com.senior.platform.apps.workflow.pojos.ResponsePendencyInput;
-import br.com.senior.platform.apps.workflow.pojos.StartProcessInput;
-import br.com.senior.platform.apps.workflow.pojos.StartProcessOutput;
+import br.com.senior.platform.workflow.pojos.CommitAttachmentInput;
+import br.com.senior.platform.workflow.pojos.LinkAttachmentsInput;
+import br.com.senior.platform.workflow.pojos.NewAttachmentInput;
+import br.com.senior.platform.workflow.pojos.NewAttachmentOutput;
+import br.com.senior.platform.workflow.pojos.ResponsePendencyInput;
+import br.com.senior.platform.workflow.pojos.SearchTasksInput;
+import br.com.senior.platform.workflow.pojos.SearchTasksOutput;
+import br.com.senior.platform.workflow.pojos.StartProcessInput;
+import br.com.senior.platform.workflow.pojos.StartProcessOutput;
 
 public class WorkflowClient extends BaseClient {
 
@@ -74,5 +76,16 @@ public class WorkflowClient extends BaseClient {
      */
     public void linkAttachments(LinkAttachmentsInput payload) throws ServiceException {
         execute(getActionsUrl("linkAttachments"), payload, token, Object.class);
+    }
+
+    /**
+     * Listar tarefas na nova central de tarefas
+     *
+     * @param payload - Payload de entrada para pesquisa de tarefas
+     * @return - Payload de saída com a lista de tarefas
+     * @throws ServiceException - Erro tratado do serviço
+     */
+    public SearchTasksOutput searchTasks(SearchTasksInput payload) throws ServiceException {
+        return execute(getActionsUrl("searchTasks"), payload, token, SearchTasksOutput.class);
     }
 }

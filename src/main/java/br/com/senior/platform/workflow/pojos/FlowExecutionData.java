@@ -1,4 +1,4 @@
-package br.com.senior.platform.apps.workflow.pojos;
+package br.com.senior.platform.workflow.pojos;
 
 /**
  * Dados para a execução do fluxo
