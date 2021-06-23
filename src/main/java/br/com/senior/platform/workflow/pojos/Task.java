@@ -50,6 +50,10 @@ public class Task {
      */
     public String responsableName;
     /**
+     * Nome e sobrenome do responsável pela tarefa
+     */
+    public String responsableFullName;
+    /**
      * Nome do solicitante
      */
     public String requesterName;
@@ -81,4 +85,19 @@ public class Task {
      * Estado da pendência em lote
      */
     public PendencyResponseStatus responseStatus;
+    
+    /** 
+     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
+     */
+    public Task(Long processId, Long processInstanceId, String activity, java.util.Date startDate, String requesterName, Long activityId, Long step, Long pendencyCount, PendencyResponseStatus responseStatus) {
+        this.processId = processId;
+        this.processInstanceId = processInstanceId;
+        this.activity = activity;
+        this.startDate = startDate;
+        this.requesterName = requesterName;
+        this.activityId = activityId;
+        this.step = step;
+        this.pendencyCount = pendencyCount;
+        this.responseStatus = responseStatus;
+    }
 }

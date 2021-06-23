@@ -1,8 +1,13 @@
 package br.com.senior.platform.workflow.pojos;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 /**
  * Dados para a execução do fluxo
  */
+@NoArgsConstructor
+@AllArgsConstructor
 public class FlowExecutionData {
     
     /**
@@ -13,19 +18,9 @@ public class FlowExecutionData {
      * Usuário que pode receber a próxima ação
      */
     public String nextSubject;
-    
-    public FlowExecutionData() {
-    }
-    
+
     /** 
-     * This constructor allows initialization of all fields, required and optional.
-     */
-    public FlowExecutionData(String actionToExecute, String nextSubject) {
-        this.actionToExecute = actionToExecute;
-        this.nextSubject = nextSubject;
-    }
-    /** 
-     * This convenience constructor allows initialization of all required fields.
+     * Construtor com todos os campos obrigatórios.
      */
     public FlowExecutionData(String actionToExecute) {
         this.actionToExecute = actionToExecute;

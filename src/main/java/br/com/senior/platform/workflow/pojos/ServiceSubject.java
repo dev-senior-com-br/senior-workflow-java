@@ -3,13 +3,15 @@ package br.com.senior.platform.workflow.pojos;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+/**
+ * Representa um usuário ou grupo.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
-public class StartProcessOutput {
+public class ServiceSubject {
     
-    /**
-     * Instância de Processo criada
-     */
-    public Long processInstanceID;
+    public Long userCode;
+    public String name;
+    public SubjectKind subjectKind;
 
 }

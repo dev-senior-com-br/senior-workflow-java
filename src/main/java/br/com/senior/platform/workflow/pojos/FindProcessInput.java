@@ -5,11 +5,11 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class StartProcessOutput {
+public class FindProcessInput {
     
     /**
-     * Instância de Processo criada
+     * Filtra pelo id
      */
-    public Long processInstanceID;
+    public Long id;
 
 }

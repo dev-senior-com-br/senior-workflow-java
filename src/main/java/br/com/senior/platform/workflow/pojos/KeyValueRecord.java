@@ -4,17 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 /**
- * Paginação
+ * Registro Genérico para Chave Valor
  */
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pagination {
+public class KeyValueRecord {
+    
     /**
-     * Faixa inicial da consulta
+     * Nome da Chave
      */
-    public Long start;
+    public String key;
     /**
-     * Quantidade de linhas da consulta
+     * Valor
      */
-    public Long limit;
+    public String value;
+   
 }

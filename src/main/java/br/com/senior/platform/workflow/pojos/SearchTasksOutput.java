@@ -1,5 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +11,7 @@ public class SearchTasksOutput {
     /**
      * Lista de tarefas
      */
-    public java.util.List<Task> tasks;
+    public List<Task> tasks;
     /**
      * Total de registros
      */

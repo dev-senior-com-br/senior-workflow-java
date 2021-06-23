@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class StartProcessOutput {
+public class StartRequestOutput {
     
     /**
      * Instância de Processo criada

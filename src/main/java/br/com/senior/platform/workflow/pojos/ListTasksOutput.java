@@ -1,25 +1,27 @@
 package br.com.senior.platform.workflow.pojos;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @NoArgsConstructor
-public class NewAttachmentInput {
-
+@AllArgsConstructor
+public class ListTasksOutput {
+    
     /**
-     * Nome do arquivo a ser anexado
+     * Agrupamentos
      */
-    public String name;
+    public List<Group> groups;
     /**
-     * Tamanho do arquivo a ser anexado
+     * Total de itens
      */
-    public Long size;
+    public Long count;
 
-    /**
+    /** 
      * Construtor que possibilita a inicialização de todos os campos obrigatórios.
      */
-    public NewAttachmentInput(String name) {
-        this.name = name;
+    public ListTasksOutput(Long count) {
+        this.count = count;
     }
 }

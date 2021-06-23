@@ -5,11 +5,11 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class StartProcessOutput {
+public class GetProcessInstanceOutput {
     
     /**
-     * Instância de Processo criada
+     * Objeto que representa uma instância de processo
      */
-    public Long processInstanceID;
+    public ProcessInstance processInstance;
 
 }

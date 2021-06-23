@@ -12,6 +12,10 @@ public class StartProcessInput {
      */
     public Long processInstanceID;
     /**
+     * Caso seja passado o processInstanceId, indica que a geração do record deve ser feita pelo BPM e não foi gerenciada externamente.
+     */
+    public Boolean generateRecord = false;
+    /**
      * Número do processo
      */
     public Long processId;
@@ -39,9 +43,13 @@ public class StartProcessInput {
      * Usuário solicitante
      */
     public String requester;
+    /**
+     * Se existir um serviço externo antes da primeira etapa, o mesmo deve sobrescrever as variáveis enviadas no businessData
+     */
+    public Boolean externalServiceOverrideBusinessData = true;
 
     /**
-     * Construtor para inicialização de todos os campos obrigatórios.
+     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
      */
     public StartProcessInput(Long processId, String businessData, FlowExecutionData flowExecutionData) {
         this.processId = processId;

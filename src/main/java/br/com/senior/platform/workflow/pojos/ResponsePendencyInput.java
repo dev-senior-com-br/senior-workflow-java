@@ -25,7 +25,7 @@ public class ResponsePendencyInput {
     public String comment;
 
     /**
-     * Construtor para inicialização de todos os campos obrigatórios.
+     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
      */
     public ResponsePendencyInput(ServiceFlowToken serviceFlowToken) {
         this.serviceFlowToken = serviceFlowToken;

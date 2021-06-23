@@ -1,5 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -24,7 +26,7 @@ public class ServiceAttachment {
     /**
      * Data do envio
      */
-    public java.util.Date uploadDate;
+    public Date uploadDate;
     /**
      * Responsável pelo anexo
      */

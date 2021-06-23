@@ -1,8 +1,13 @@
 package br.com.senior.platform.workflow.pojos;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 /**
  * Representa a entrada de dados de uma ação de resposta de pendência
  */
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseData {
     
     /**
@@ -13,15 +18,5 @@ public class ResponseData {
      * Informação para Fluxo de Execução do Processo
      */
     public FlowExecutionData flowExecutionData;
-    
-    public ResponseData() {
-    }
-    
-    /** 
-     * This constructor allows initialization of all fields, required and optional.
-     */
-    public ResponseData(String businessData, FlowExecutionData flowExecutionData) {
-        this.businessData = businessData;
-        this.flowExecutionData = flowExecutionData;
-    }
+
 }

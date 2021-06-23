@@ -7,15 +7,15 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class LinkAttachmentsInput {
-
+public class GetRequestsResumeOutput {
+    
     /**
-     * Identificadores de anexo
+     * Lista com resumo das solicitações
      */
-    public List<String> ids;
+    public List<MyRequestsResume> requestsResume;
     /**
-     * Identificador da instância de processo a qual o arquivo pertence.
+     * Número Total de instância de processos
      */
-    public Long processInstance;
+    public Long total;
 
 }

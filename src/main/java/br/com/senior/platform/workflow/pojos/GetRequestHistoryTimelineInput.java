@@ -5,10 +5,10 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class StartProcessOutput {
+public class GetRequestHistoryTimelineInput {
     
     /**
-     * Instância de Processo criada
+     * Identificador da instância de Processo
      */
     public Long processInstanceID;
 

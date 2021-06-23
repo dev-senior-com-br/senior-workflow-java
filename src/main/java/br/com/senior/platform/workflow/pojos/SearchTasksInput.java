@@ -1,5 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -17,5 +19,5 @@ public class SearchTasksInput {
     /**
      * Ordenação
      */
-    public java.util.List<Order> orders;
+    public List<Order> orders;
 }
