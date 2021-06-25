@@ -3,11 +3,13 @@ package br.com.senior.platform.workflow.pojos;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 /**
  * Filtro de tarefas
  */
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchTasksFilter {

@@ -89,7 +89,7 @@ public class Task {
     /** 
      * Construtor que possibilita a inicialização de todos os campos obrigatórios.
      */
-    public Task(Long processId, Long processInstanceId, String activity, java.util.Date startDate, String requesterName, Long activityId, Long step, Long pendencyCount, PendencyResponseStatus responseStatus) {
+    public Task(Long processId, Long processInstanceId, String activity, Date startDate, String requesterName, Long activityId, Long step, Long pendencyCount, PendencyResponseStatus responseStatus) {
         this.processId = processId;
         this.processInstanceId = processInstanceId;
         this.activity = activity;

@@ -1,12 +1,10 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * Paginação
  */
-@NoArgsConstructor
 @AllArgsConstructor
 public class Pagination {
     /**

@@ -8,7 +8,7 @@ import br.com.senior.platform.workflow.pojos.*;
 
 public class WorkflowClient extends BaseClient {
 
-    String token;
+    private final String token;
 
     public WorkflowClient(String token) {
         this(token, null);
@@ -168,5 +168,90 @@ public class WorkflowClient extends BaseClient {
     public GetRequestHistoryTimelineOutput getRequestHistoryTimeline(GetRequestHistoryTimelineInput payload) throws ServiceException {
         return execute(getQueriesUrl(ApiPath.Workflow.GET_REQUEST_HISTORY_TIMELINE), payload, token, GetRequestHistoryTimelineOutput.class);
     }
+    
+    /**
+     * Lista as solicitações de aplicações terceiras por status.
+     * 
+     * @param payload - Payload de entrada com informações necessárias para recuperar as solicitações de aplicações terceiras.
+     * @return - Payload de saída com lista de solicitações de aplicações terceiras.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public GetThirdPartyRequestByStatusOutput getThirdPartyRequestByStatus(GetThirdPartyRequestByStatusInput payload) throws ServiceException {
+        return execute(getQueriesUrl(ApiPath.Workflow.GET_THIRD_PARTY_REQUEST_BY_STATUS), payload, token, GetThirdPartyRequestByStatusOutput.class);
+    }
+    
+    /**
+     * Obtém os usuários e grupos conforme o tipo (usuário ou grupo).
+     * 
+     * @param payload - Payload de entrada com informações necessárias para recuperar os responsáveis por tipo.
+     * @return - Payload de saída com lista de responsáveis.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public GetSubjectsOutput getSubjects(GetSubjectsInput payload) throws ServiceException {
+        return execute(getQueriesUrl(ApiPath.Workflow.GET_SUBJECTS), payload, token, GetSubjectsOutput.class);
+    }
+    
+    /**
+     * Obtém um ou mais responsáveis possíveis da próxima tarefa.
+     * 
+     * @param payload - Payload de entrada com informações necessárias para recuperar os responsáveis possíveis da próxima tarefa.
+     * @return - Payload de saída com lista de responsáveis possíveis da próxima tarefa.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public GetNextSubjectOutput getNextSubject(GetNextSubjectInput payload) throws ServiceException {
+        return execute(getQueriesUrl(ApiPath.Workflow.GET_NEXT_SUBJECT), payload, token, GetNextSubjectOutput.class);
+    }
+    
+    /**
+     * Obtém um ou mais responsáveis possíveis da próxima tarefa em relação à tarefa inicial do processo.
+     * 
+     * @param payload - Payload de entrada com informações necessárias para recuperar os responsáveis possíveis da próxima tarefa.
+     * @return - Payload de saída com lista de responsáveis possíveis da próxima tarefa.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public GetNextSubjectFromInitialTaskOutput getNextSubjectFromInitialTask(GetNextSubjectFromInitialTaskInput payload) throws ServiceException {
+        return execute(getQueriesUrl(ApiPath.Workflow.GET_NEXT_SUBJECT_FROM_INITIAL_TASK), payload, token, GetNextSubjectFromInitialTaskOutput.class);
+    }
+    
+    /**
+     * Responde pendências em lote executando uma das ações disponíveis.
+     * 
+     * @param payload - Payload de entrada com informações para responder a lista de pendências.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public void batchPendenciesResponse(BatchPendenciesResponseInput payload) throws ServiceException {
+        execute(getActionsUrl(ApiPath.Workflow.BATCH_PENDENCIES_RESPONSE), payload, token, Object.class);
+    }
 
+    /**
+     * Atribui uma pendência para outro usuário.
+     * 
+     * @param payload - Payload de entrada com informações para realizar a troca do usuário da pendência.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public void changePendencyUser(ChangePendencyUserInput payload) throws ServiceException {
+        execute(getActionsUrl(ApiPath.Workflow.CHANGE_PENDENCY_USER), payload, token, Object.class);
+    }
+    
+    /**
+     * Obtém as opções disponíveis para execução de uma pendência.
+     * 
+     * @param payload - Payload de entrada com informações necessárias para recuperar as opções disponíveis.
+     * @return - Payload de saída com lista de opções disponíveis de uma pendência.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public GetPendencyProcessActionsOutput getPendencyProcessActions(GetPendencyProcessActionsInput payload) throws ServiceException {
+        return execute(getQueriesUrl(ApiPath.Workflow.GET_PENDENCY_PROCESS_ACTIONS), payload, token, GetPendencyProcessActionsOutput.class);
+    }
+    
+    /**
+     * Obtém as pendências do usuário autenticado conforme o tipo.
+     * 
+     * @param payload - Payload de entrada com informações necessárias para recuperar as pendências .
+     * @return - Payload de saída com lista de opções disponíveis de uma pendência.
+     * @throws ServiceException - Erro tratado do serviço.
+     */
+    public GetMyPendenciesOutput getMyPendencies(GetMyPendenciesInput payload) throws ServiceException {
+        return execute(getQueriesUrl(ApiPath.Workflow.GET_MY_PENDENCIES), payload, token, GetMyPendenciesOutput.class);
+    }
 }

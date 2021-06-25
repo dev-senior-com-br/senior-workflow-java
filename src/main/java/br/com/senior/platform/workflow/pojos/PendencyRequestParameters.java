@@ -1,13 +1,16 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+/**
+ * Representa um objeto usado de parâmetro de entrada de alguns serviços.
+ */
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetRequestsResumeInput {
+public class PendencyRequestParameters {
     
     /**
      * Faixa inicial da consulta
@@ -18,18 +21,16 @@ public class GetRequestsResumeInput {
      */
     public Long limit;
     /**
-     * Filtro com lista de processos separado por virgula
+     * Tipo da pendência
      */
-    public List<Long> filterProcess;
+    public PendencyType type;
     /**
      * Filtro para buscar pelo nome da pendência ou valor das variáveis do processo
      */
     public String filterValue;
     /**
-     * Filtro por status
+     * Filtro do tipo de processo (embarcado ou não)
      */
-    public List<MyRequestKind> filter;
-    public List<KeyValueRecord> orders;
-    public ReportTaskExpirationStatus situation;
+    public ProcessFilterType processFilterType;
 
 }
