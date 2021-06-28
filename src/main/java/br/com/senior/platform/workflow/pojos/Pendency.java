@@ -1,6 +1,6 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.Date;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,11 +30,11 @@ public class Pendency {
     @NonNull
     private ServiceSubject delegatorSubject;
     @NonNull
-    private Date startDate;
+    private Instant startDate;
     @NonNull
-    private Date lastUpdateDate;
+    private Instant lastUpdateDate;
     @NonNull
-    private Date expirationDate;
+    private Instant expirationDate;
     @NonNull
     private String performerId;
     @NonNull

@@ -1,6 +1,6 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -29,11 +29,11 @@ public class ProcessInstance {
     @NonNull
     private ServiceSubject cancelSubject;
     @NonNull
-    private Date startDate;
+    private Instant startDate;
     @NonNull
-    private Date lastUptadeDate;
+    private Instant lastUptadeDate;
     @NonNull
-    private Date endDate;
+    private Instant endDate;
     @NonNull
     private String flowExecutionStatus;
     @NonNull
@@ -43,6 +43,6 @@ public class ProcessInstance {
     @NonNull
     private List<ServiceFlowToken> flowToken;
     @NonNull
-    private Date taskExpiration;
+    private Instant taskExpiration;
 
 }

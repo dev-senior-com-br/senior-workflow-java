@@ -1,6 +1,6 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -69,7 +69,7 @@ public class ServiceProcess {
      * Data de criação do processo
      */
     @NonNull
-    private Date creationDate;
+    private Instant creationDate;
     /**
      * Se o processo está ativo
      */

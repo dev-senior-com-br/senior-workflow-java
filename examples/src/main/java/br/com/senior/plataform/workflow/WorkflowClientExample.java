@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow;
 
+import java.time.Instant;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -36,7 +36,7 @@ public class WorkflowClientExample {
         formData.put("retorno", "2021-06-28");
         formData.put("motivo", "Visita a cliente");
         
-        // inicia uma solicitação, criando uma instância do processo
+        // inicia uma solicitação, criando uma instância do processo (também é possível utilizar o startProcess(processId))
         int processInstanceId = startRequest(processId, formData);
         
         // recupera lista de todos os processos
@@ -148,7 +148,7 @@ public class WorkflowClientExample {
     private static void getRankingProcesses() throws ServiceException {
         printMessage("\ngetRankingProcesses...");
         GetRankingProcessesInput payload = GetRankingProcessesInput.builder()
-                .start(new Date(2020, 1, 1))
+                .start(Instant.parse("2020-01-01T00:00:00.00Z"))
                 .limit(5)
                 .build();
 
@@ -441,5 +441,4 @@ public class WorkflowClientExample {
     private static void printMessage(String message) {
         System.out.println(message);
     }
-
 }

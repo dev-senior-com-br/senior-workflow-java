@@ -1,6 +1,6 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.Date;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +33,7 @@ public class RequestHistoryTimelineEntry {
      * Data do Histórico
      */
     @NonNull
-    private Date historyDate;
+    private Instant historyDate;
     /**
      * Usuário responsável
      */

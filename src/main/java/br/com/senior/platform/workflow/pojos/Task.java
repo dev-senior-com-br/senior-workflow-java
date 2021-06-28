@@ -1,6 +1,6 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.Date;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,15 +45,15 @@ public class Task {
      * Data de início da tarefa/processo
      */
     @NonNull
-    private Date startDate;
+    private Instant startDate;
     /**
      * Data de fim da tarefa/processo
      */
-    private Date endDate;
+    private Instant endDate;
     /**
      * Data de expiração da tarefa/processo
      */
-    private Date expirationDate;
+    private Instant expirationDate;
     /**
      * Nome do responsável pela tarefa
      */

@@ -1,6 +1,6 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.Date;
+import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +36,6 @@ public class GetProcessesListInput {
     /**
      * A partir de qual data buscar eventos de serviços externos
      */
-    private Date serviceEventStartDate;
+    private Instant serviceEventStartDate;
 
 }

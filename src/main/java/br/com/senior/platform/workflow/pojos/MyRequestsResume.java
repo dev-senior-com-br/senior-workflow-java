@@ -1,6 +1,6 @@
 package br.com.senior.platform.workflow.pojos;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -34,12 +34,12 @@ public class MyRequestsResume {
      * Criação da Solicitação
      */
     @NonNull
-    private Date startDate;
+    private Instant startDate;
     /**
      * Encerramento da Solicitação
      */
     @NonNull
-    private Date endDate;
+    private Instant endDate;
     /**
      * Status
      */
@@ -59,7 +59,7 @@ public class MyRequestsResume {
      * Data de Expiração
      */
     @NonNull
-    private Date expirationDate;
+    private Instant expirationDate;
     /**
      * Identificador do Processo
      */
