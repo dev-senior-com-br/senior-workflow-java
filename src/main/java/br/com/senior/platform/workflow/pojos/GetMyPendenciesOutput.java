@@ -3,20 +3,17 @@ package br.com.senior.platform.workflow.pojos;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetMyPendenciesOutput {
-    
-    public List<Pendency> pendencies;
-    public Long total;
-    
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public GetMyPendenciesOutput(java.util.List<Pendency> pendencies) {
-        this.pendencies = pendencies;
-    }
+
+    private List<Pendency> pendencies;
+    private Integer total;
 
 }

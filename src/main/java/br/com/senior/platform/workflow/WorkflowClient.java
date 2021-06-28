@@ -23,11 +23,11 @@ public class WorkflowClient extends BaseClient {
      * Inicia um processo.
      *
      * @param payload - Payload de entrada com os dados para início do processo.
-     * @return - Identificador da instância do processo iniciado.
+     * @return - Payload de saída com  identificador da instância do processo iniciado.
      * @throws ServiceException - Erro tratado do serviço.
      */
-    public Long startProcess(StartProcessInput payload) throws ServiceException {
-        return execute(getActionsUrl(ApiPath.Workflow.START_PROCESS), payload, token, StartProcessOutput.class).processInstanceID;
+    public StartProcessOutput startProcess(StartProcessInput payload) throws ServiceException {
+        return execute(getActionsUrl(ApiPath.Workflow.START_PROCESS), payload, token, StartProcessOutput.class);
     }
 
     /**
@@ -54,10 +54,11 @@ public class WorkflowClient extends BaseClient {
     /**
      * Faz commit de um anexo movendo ele da área temporária para permanente.
      *
-     * @param payload - Payload de entrada com o identificador do anexo.
+     * @param attachmentId - Identificador do anexo que deseja fazer commit.
      * @throws ServiceException - Erro tratado do serviço.
      */
-    public void commitAttachment(CommitAttachmentInput payload) throws ServiceException {
+    public void commitAttachment(String attachmentId) throws ServiceException {
+        CommitAttachmentInput payload = new CommitAttachmentInput(attachmentId);
         execute(getActionsUrl(ApiPath.Workflow.COMMIT_ATTACHMENT), payload, token, Object.class);
     }
 
@@ -85,11 +86,12 @@ public class WorkflowClient extends BaseClient {
     /**
      * Busca um processo do Workflow.
      * 
-     * @param payload - Payload de entrada para buscar um processo.
+     * @param processId - Identificador do processo a ser recuperado.
      * @return - Payload de saída com o processo encontrado.
      * @throws ServiceException - Erro tratado do serviço.
      */
-    public FindProcessOutput findProcess(FindProcessInput payload) throws ServiceException {
+    public FindProcessOutput findProcess(Integer processId) throws ServiceException {
+        FindProcessInput payload = new FindProcessInput(processId);
         return execute(getQueriesUrl(ApiPath.Workflow.FIND_PROCESS), payload, token, FindProcessOutput.class);
     }
 
@@ -118,11 +120,12 @@ public class WorkflowClient extends BaseClient {
     /**
      * Obtém as informações de uma instância específica de um processo (um processo já iniciado).
      * 
-     * @param payload - Payload de entrada para recuperar a instância do processo.
+     * @param processInstanceId - Identificador da instância do processo a ser recuperado.
      * @return - Payload de saída com a instância do processo recuperada.
      * @throws ServiceException - Erro tratado do serviço.
      */
-    public GetProcessInstanceOutput getProcessInstance(GetProcessInstanceInput payload) throws ServiceException {
+    public GetProcessInstanceOutput getProcessInstance(Integer processInstanceId) throws ServiceException {
+        GetProcessInstanceInput payload = new GetProcessInstanceInput(processInstanceId);
         return execute(getQueriesUrl(ApiPath.Workflow.GET_PROCESS_INSTANCE), payload, token, GetProcessInstanceOutput.class);
     }
 
@@ -144,7 +147,7 @@ public class WorkflowClient extends BaseClient {
      * @throws ServiceException - Erro tratado do serviço.
      */
     public StartRequestOutput startRequest(StartRequestInput payload) throws ServiceException {
-        return execute(getActionsUrl(ApiPath.Workflow.GET_PROCESS_INSTANCE), payload, token, StartRequestOutput.class);
+        return execute(getActionsUrl(ApiPath.Workflow.START_REQUEST), payload, token, StartRequestOutput.class);
     }
     
     /**
@@ -161,11 +164,12 @@ public class WorkflowClient extends BaseClient {
     /**
      * Obtém uma linha do tempo com o registro de ações e observações de uma solicitação.
      * 
-     * @param payload - Payload de entrada com informações necessárias para recuperar o histórico da solicitação.
+     * @param processInstanceId - Identificador da instância do processo do qual deseja recuperar o histórico de solicitação.
      * @return - Payload de saída com histórico da solicitação.
      * @throws ServiceException - Erro tratado do serviço.
      */
-    public GetRequestHistoryTimelineOutput getRequestHistoryTimeline(GetRequestHistoryTimelineInput payload) throws ServiceException {
+    public GetRequestHistoryTimelineOutput getRequestHistoryTimeline(Integer processInstanceId) throws ServiceException {
+        GetRequestHistoryTimelineInput payload = new GetRequestHistoryTimelineInput(processInstanceId);
         return execute(getQueriesUrl(ApiPath.Workflow.GET_REQUEST_HISTORY_TIMELINE), payload, token, GetRequestHistoryTimelineOutput.class);
     }
     

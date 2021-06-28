@@ -1,20 +1,27 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Ordenação
  */
-@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 @AllArgsConstructor
 public class Order {
     /**
      * Campo a ser ordenado
      */
-    public OrderField field;
+    @NonNull
+    private OrderField field;
     /**
      * Direção da ordenação
      */
-    public OrderDirection direction;
+    @NonNull
+    private OrderDirection direction;
 }

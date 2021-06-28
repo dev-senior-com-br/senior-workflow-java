@@ -3,21 +3,27 @@ package br.com.senior.platform.workflow.pojos;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchTasksInput {
     /**
      * Filtros para pesquisa
      */
-    public SearchTasksFilter filter;
+    private SearchTasksFilter filter;
     /**
      * Paginação
      */
-    public Pagination pagination;
+    private Pagination pagination;
     /**
      * Ordenação
      */
-    public List<Order> orders;
+    private List<Order> orders;
 }

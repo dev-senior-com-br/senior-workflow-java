@@ -3,11 +3,18 @@ package br.com.senior.platform.workflow.pojos;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Linha do tempo com o registro de ações e observações de uma solicitação
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestHistoryTimelineEntry {
@@ -15,66 +22,60 @@ public class RequestHistoryTimelineEntry {
     /**
      * Identificador da Instância do Processo
      */
-    public Long processInstanceId;
+    @NonNull
+    private Integer processInstanceId;
     /**
      * Tipo de Entrada Histórico
      */
-    public RequestHistoryType historyType;
+    @NonNull
+    private RequestHistoryType historyType;
     /**
      * Data do Histórico
      */
-    public Date historyDate;
+    @NonNull
+    private Date historyDate;
     /**
      * Usuário responsável
      */
-    public String userName;
+    @NonNull
+    private String userName;
     /**
      * Ação executada em nome do usuário
      */
-    public String impersonatedUserName;
+    private String impersonatedUserName;
     /**
      * Nome da Tarefa
      */
-    public String taskName;
+    private String taskName;
     /**
      * Nome ação Executada
      */
-    public String actionName;
+    private String actionName;
     /**
      * Endereço IP do usuário
      */
-    public String userIpAddress;
+    private String userIpAddress;
     /**
      * Comentário realizado na etapa do processo
      */
-    public String comment;
+    private String comment;
     /**
      * Anexo
      */
-    public String attachmentName;
+    private String attachmentName;
     /**
      * Responsável anterior
      */
-    public String oldResponsible;
+    @NonNull
+    private String oldResponsible;
     /**
      * Novo responsável
      */
-    public String newResponsible;
+    @NonNull
+    private String newResponsible;
     /**
      * Razão do cancelamento
      */
-    public String cancelReason;
-
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public RequestHistoryTimelineEntry(Long processInstanceId, RequestHistoryType historyType, Date historyDate, String userName, String oldResponsible, String newResponsible) {
-        this.processInstanceId = processInstanceId;
-        this.historyType = historyType;
-        this.historyDate = historyDate;
-        this.userName = userName;
-        this.oldResponsible = oldResponsible;
-        this.newResponsible = newResponsible;
-    }
+    private String cancelReason;
 
 }

@@ -2,32 +2,33 @@ package br.com.senior.platform.workflow.pojos;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class BatchPendenciesResponseInput {
-    
+
     /**
      * Tokens das pendências
      */
-    public List<FlowToken> flowTokens;
+    @NonNull
+    private List<FlowToken> flowTokens;
     /**
      * Ação a ser executada
      */
-    public String actionToExecute;
+    private String actionToExecute;
     /**
      * Token de autenticação
      */
-    public String authorization;
-    
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public BatchPendenciesResponseInput(java.util.List<FlowToken> flowTokens, String authorization) {
-        this.flowTokens = flowTokens;
-        this.authorization = authorization;
-    }
-    
+    @NonNull
+    private String authorization;
+
 }

@@ -1,25 +1,27 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
-@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class NewAttachmentInput {
 
     /**
      * Nome do arquivo a ser anexado
      */
-    public String name;
+    @NonNull
+    private String name;
     /**
      * Tamanho do arquivo a ser anexado
      */
-    public Long size;
+    private Integer size;
 
-    /**
-     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
-     */
-    public NewAttachmentInput(String name) {
-        this.name = name;
-    }
 }

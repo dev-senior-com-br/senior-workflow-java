@@ -4,84 +4,85 @@ import java.util.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Resumo das Solicitações
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class MyRequestsResume {
-    
+
     /**
      * Instância de Processo
      */
-    public Long processInstanceId;
+    @NonNull
+    private Integer processInstanceId;
     /**
      * Nome do Processo
      */
-    public String processName;
+    @NonNull
+    private String processName;
     /**
      * Criação da Solicitação
      */
-    public Date startDate;
+    @NonNull
+    private Date startDate;
     /**
      * Encerramento da Solicitação
      */
-    public Date endDate;
+    @NonNull
+    private Date endDate;
     /**
      * Status
      */
-    public String status;
+    @NonNull
+    private String status;
     /**
      * Nome da Atividade Atual
      */
-    public String activityName;
+    @NonNull
+    private String activityName;
     /**
      * Usuário Atual da Tarefa
      */
-    public String taskUser;
+    @NonNull
+    private String taskUser;
     /**
      * Data de Expiração
      */
-    public Date expirationDate;
+    @NonNull
+    private Date expirationDate;
     /**
      * Identificador do Processo
      */
-    public Long processId;
+    @NonNull
+    private Integer processId;
     /**
      * Versão do Processo
      */
-    public Long processVersion;
+    @NonNull
+    private Integer processVersion;
     /**
      * Indica se o processo desta solicitação é embarcado
      */
-    public Boolean embedded;
+    @NonNull
+    private Boolean embedded;
     /**
      * Detalhes da Solicitação
      */
-    public String detail;
+    @NonNull
+    private String detail;
     /**
      * Identificador de uma pendência.
      */
-    public List<ServiceFlowToken> flowToken;
-
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public MyRequestsResume(Long processInstanceId, String processName, Date startDate, Date endDate, String status, String activityName, String taskUser, Date expirationDate, Long processId, Long processVersion, Boolean embedded, String detail) {
-        this.processInstanceId = processInstanceId;
-        this.processName = processName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.status = status;
-        this.activityName = activityName;
-        this.taskUser = taskUser;
-        this.expirationDate = expirationDate;
-        this.processId = processId;
-        this.processVersion = processVersion;
-        this.embedded = embedded;
-        this.detail = detail;
-    }
+    private List<ServiceFlowToken> flowToken;
 
 }

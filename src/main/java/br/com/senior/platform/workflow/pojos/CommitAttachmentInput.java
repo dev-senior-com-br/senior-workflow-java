@@ -1,14 +1,20 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
-@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 @AllArgsConstructor
 public class CommitAttachmentInput {
 
     /**
      * Identificador do anexo
      */
-    public String id;
+    @NonNull
+    private String id;
 }

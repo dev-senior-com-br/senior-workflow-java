@@ -4,11 +4,15 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Filtro de tarefas
  */
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,17 +20,17 @@ public class SearchTasksFilter {
     /**
      * Filtrar pelo solicitante
      */
-    public List<String> requesters;
+    private List<String> requesters;
     /**
      * Filtrar pelo identificador da solicitação
      */
-    public List<String> requests;
+    private List<String> requests;
     /**
      * Filtrar pelo identificador do processo
      */
-    public List<String> processes;
+    private List<String> processes;
     /**
      * Filtrar pelo status
      */
-    public List<String> statuses;
+    private List<String> statuses;
 }

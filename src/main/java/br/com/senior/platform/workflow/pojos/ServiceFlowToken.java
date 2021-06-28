@@ -1,26 +1,36 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Representa a chave de uma pendência de um processo. - Deprecado
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServiceFlowToken {
-    
+
     /**
      * Identificador da Instância do Processo
      */
-    public Long processInstanceID;
+    @NonNull
+    private Integer processInstanceID;
     /**
      * Identificador da Etapa do Processo
      */
-    public Long step;
+    @NonNull
+    private Integer step;
     /**
      * Identificador da Atividade
      */
-    public Long activityId;
+    @NonNull
+    private Integer activityId;
 
 }

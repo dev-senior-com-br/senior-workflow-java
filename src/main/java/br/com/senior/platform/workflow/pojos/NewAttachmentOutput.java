@@ -1,17 +1,21 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewAttachmentOutput {
     /**
      * Anexo
      */
-    public ServiceAttachment attachment;
+    private ServiceAttachment attachment;
     /**
      * URL para o anexo
      */
-    public String uploadUrl;
+    private String uploadUrl;
 }

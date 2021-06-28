@@ -1,8 +1,15 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class StartProcessInput {
@@ -10,50 +17,45 @@ public class StartProcessInput {
     /**
      * Quando o usuário quer definir o número da instância do processo.
      */
-    public Long processInstanceID;
+    private Integer processInstanceID;
     /**
      * Caso seja passado o processInstanceId, indica que a geração do record deve ser feita pelo BPM e não foi gerenciada externamente.
      */
-    public Boolean generateRecord = false;
+    private Boolean generateRecord;
     /**
      * Número do processo
      */
-    public Long processId;
+    @NonNull
+    private Integer processId;
     /**
      * Versão do Processo
      */
-    public Long processVersion;
+    private Integer processVersion;
     /**
      * Variáveis de Negócio do Processo
      */
-    public String businessData;
+    @NonNull
+    private String businessData;
     /**
      * Informação para Fluxo de Execução do Processo
      */
-    public FlowExecutionData flowExecutionData;
+    @NonNull
+    private FlowExecutionData flowExecutionData;
     /**
      * String de autorização executados da tarefas do workflow
      */
-    public String authorization;
+    private String authorization;
     /**
      * Título opcional da solicitação
      */
-    public String title;
+    private String title;
     /**
      * Usuário solicitante
      */
-    public String requester;
+    private String requester;
     /**
      * Se existir um serviço externo antes da primeira etapa, o mesmo deve sobrescrever as variáveis enviadas no businessData
      */
-    public Boolean externalServiceOverrideBusinessData = true;
+    private Boolean externalServiceOverrideBusinessData;
 
-    /**
-     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
-     */
-    public StartProcessInput(Long processId, String businessData, FlowExecutionData flowExecutionData) {
-        this.processId = processId;
-        this.businessData = businessData;
-        this.flowExecutionData = flowExecutionData;
-    }
 }

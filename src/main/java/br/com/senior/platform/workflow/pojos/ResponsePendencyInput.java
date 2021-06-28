@@ -1,8 +1,15 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponsePendencyInput {
@@ -10,24 +17,19 @@ public class ResponsePendencyInput {
     /**
      * Token do Processo
      */
-    public ServiceFlowToken serviceFlowToken;
+    @NonNull
+    private ServiceFlowToken serviceFlowToken;
     /**
      * Dados de uma ação de resposta de pendência
      */
-    public ResponseData responseData;
+    private ResponseData responseData;
     /**
      * String de autorização executada da tarefa do workflow
      */
-    public String authorization;
+    private String authorization;
     /**
      * Comentário para solicitação
      */
-    public String comment;
+    private String comment;
 
-    /**
-     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
-     */
-    public ResponsePendencyInput(ServiceFlowToken serviceFlowToken) {
-        this.serviceFlowToken = serviceFlowToken;
-    }
 }

@@ -3,32 +3,44 @@ package br.com.senior.platform.workflow.pojos;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Representação de um anexo no BlobService
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServiceAttachment {
     /**
      * Identificador do anexo
      */
-    public String id;
+    @NonNull
+    private String id;
     /**
      * Nome do arquivo anexado
      */
-    public String name;
+    @NonNull
+    private String name;
     /**
      * Tamanho do arquivo anexado
      */
-    public Long size;
+    @NonNull
+    private Integer size;
     /**
      * Data do envio
      */
-    public Date uploadDate;
+    @NonNull
+    private Date uploadDate;
     /**
      * Responsável pelo anexo
      */
-    public String addedBy;
+    @NonNull
+    private String addedBy;
 }

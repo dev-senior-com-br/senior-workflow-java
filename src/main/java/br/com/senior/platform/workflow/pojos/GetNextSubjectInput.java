@@ -1,31 +1,32 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetNextSubjectInput {
-    
+
     /**
      * Token com informações da etapa do fluxo em andamento
      */
-    public ServiceFlowToken serviceFlowToken;
+    @NonNull
+    private ServiceFlowToken serviceFlowToken;
     /**
      * Nome da Sequência do Processo Modelador
      */
-    public String sequenceName;
+    @NonNull
+    private String sequenceName;
     /**
      * Token de autenticação da G7
      */
-    public String authorization;
-    
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public GetNextSubjectInput(ServiceFlowToken serviceFlowToken, String sequenceName) {
-        this.serviceFlowToken = serviceFlowToken;
-        this.sequenceName = sequenceName;
-    }
+    private String authorization;
 
 }

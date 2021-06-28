@@ -9,7 +9,7 @@ public enum Operators {
      */
     EQ,
     /**
-     * diferente
+     * Diferente
      */
     NE,
     /**

@@ -1,11 +1,18 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Resumo das Solicitações com Integração Terceira
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ThirdpartyRequestResume {
@@ -13,22 +20,16 @@ public class ThirdpartyRequestResume {
     /**
      * Identificador da pendência
      */
-    public ServiceFlowToken flowToken;
+    @NonNull
+    private ServiceFlowToken flowToken;
     /**
      * Identificador da aplicação terceira
      */
-    public String thirdpartyId;
+    private String thirdpartyId;
     /**
      * Dados das variáveis do processo
      */
-    public Object processData;
-
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public ThirdpartyRequestResume(ServiceFlowToken flowToken, Object processData) {
-        this.flowToken = flowToken;
-        this.processData = processData;
-    }
+    @NonNull
+    private Object processData;
 
 }

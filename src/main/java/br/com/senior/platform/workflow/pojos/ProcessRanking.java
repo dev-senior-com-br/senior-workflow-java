@@ -1,51 +1,53 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Ranking de Processos mais usados pelo usuário
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProcessRanking {
-    
+
     /**
      * Identificador do Processo
      */
-    public Long processId;
+    @NonNull
+    private Integer processId;
     /**
      * Versão Atual do Processo
      */
-    public Long currentVersion;
+    @NonNull
+    private Integer currentVersion;
     /**
      * Nome do Processo
      */
-    public String processName;
+    @NonNull
+    private String processName;
     /**
      * Tag agrupador de Processos
      */
-    public String tag;
+    private String tag;
     /**
      * Ícone do processo
      */
-    public String icon;
+    private String icon;
     /**
      * Descrição do processo
      */
-    public String description;
+    private String description;
     /**
      * Número de solicitações
      */
-    public Long requests;
+    @NonNull
+    private Integer requests;
 
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public ProcessRanking(Long processId, Long currentVersion, String processName, Long requests) {
-        this.processId = processId;
-        this.currentVersion = currentVersion;
-        this.processName = processName;
-        this.requests = requests;
-    }
 }

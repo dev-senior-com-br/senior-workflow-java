@@ -2,34 +2,33 @@ package br.com.senior.platform.workflow.pojos;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CancelProcessInstanceInput {
-    
+
     /**
      * Identificadores das instâncias de processo a serem canceladas.
      */
-    public List<Long> ids;
+    @NonNull
+    private List<Integer> ids;
     /**
      * Usuário responsável pelo cancelamento. Deve ser informado quando for uma aplicação, quando não for aplicação esse campo é ignorado
      */
-    public String user;
+    private String user;
     /**
      * Motivo do cancelamento.
      */
-    public String reason;
-    
-    /**
-     * Construtor com todos os campos obrigatórios.
-     * @param ids - Identificadores das instâncias de processo a serem canceladas.
-     * @param reason - Motivo do cancelamento.
-     */
-    public CancelProcessInstanceInput(List<Long> ids, String reason) {
-        this.ids = ids;
-        this.reason = reason;
-    }
+    @NonNull
+    private String reason;
 
 }

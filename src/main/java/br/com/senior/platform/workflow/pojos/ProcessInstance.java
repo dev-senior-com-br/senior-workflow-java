@@ -4,26 +4,45 @@ import java.util.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Representa uma instância de processo
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProcessInstance {
     
-    public Long id;
-    public ServiceProcess process;
-    public ServiceSubject startedSubject;
-    public ServiceSubject cancelSubject;
-    public Date startDate;
-    public Date lastUptadeDate;
-    public Date endDate;
-    public String flowExecutionStatus;
-    public String endMessage;
-    public String description;
-    public List<ServiceFlowToken> flowToken;
-    public Date taskExpiration;
+    @NonNull
+    private Integer id;
+    @NonNull
+    private ServiceProcess process;
+    @NonNull
+    private ServiceSubject startedSubject;
+    @NonNull
+    private ServiceSubject cancelSubject;
+    @NonNull
+    private Date startDate;
+    @NonNull
+    private Date lastUptadeDate;
+    @NonNull
+    private Date endDate;
+    @NonNull
+    private String flowExecutionStatus;
+    @NonNull
+    private String endMessage;
+    @NonNull
+    private String description;
+    @NonNull
+    private List<ServiceFlowToken> flowToken;
+    @NonNull
+    private Date taskExpiration;
 
 }

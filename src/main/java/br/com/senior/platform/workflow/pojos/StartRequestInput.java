@@ -1,47 +1,48 @@
 package br.com.senior.platform.workflow.pojos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class StartRequestInput {
-    
+
     /**
      * Identificador do processo
      */
-    public Long processId;
+    @NonNull
+    private Integer processId;
     /**
      * Objeto com as variáveis de Negócio do Processo. Ex: businessData: { campo1: "valor1", campo2: 2 }
      */
-    public Object businessData;
+    @NonNull
+    private Object businessData;
     /**
      * Nome da ação a ser tomada dentro do fluxo. Obrigatório caso possua mais de uma ação possível
      */
-    public String actionToExecute;
+    private String actionToExecute;
     /**
      * Responsável que vai receber a próxima ação, obrigatório caso o mecanismo de atribuição retorne mais de um responsável
      */
-    public String nextSubject;
+    private String nextSubject;
     /**
      * Token de autorização para integração com Serviços Externos, caso necessário
      */
-    public String externalServiceAuthorization;
+    private String externalServiceAuthorization;
     /**
      * Título opcional da solicitação
      */
-    public String title;
+    private String title;
     /**
      * Usuário solicitante, caso a solicitação esteja sendo feita em nome de outro usuário
      */
-    public String requester;
-
-    /** 
-     * Construtor com todos os campos obrigatórios.
-     */
-    public StartRequestInput(Long processId, Object businessData) {
-        this.processId = processId;
-        this.businessData = businessData;
-    }
+    private String requester;
 
 }

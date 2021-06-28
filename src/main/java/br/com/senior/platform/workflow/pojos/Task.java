@@ -1,103 +1,103 @@
 package br.com.senior.platform.workflow.pojos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Tarefa
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 public class Task {
     /**
      * Id do processo
      */
-    public Long processId;
+    @NonNull
+    private Integer processId;
     /**
      * Nome do processo
      */
-    public String processName;
+    private String processName;
     /**
      * Id da instância do processo
      */
-    public Long processInstanceId;
+    @NonNull
+    private Integer processInstanceId;
     /**
      * Atividade
      */
-    public String activity;
+    @NonNull
+    private String activity;
     /**
      * Detalhes do processo
      */
-    public String detail;
+    private String detail;
     /**
      * Data de início da tarefa/processo
      */
-    public Date startDate;
+    @NonNull
+    private Date startDate;
     /**
      * Data de fim da tarefa/processo
      */
-    public Date endDate;
+    private Date endDate;
     /**
      * Data de expiração da tarefa/processo
      */
-    public Date expirationDate;
+    private Date expirationDate;
     /**
      * Nome do responsável pela tarefa
      */
-    public String responsableName;
+    private String responsableName;
     /**
      * Nome e sobrenome do responsável pela tarefa
      */
-    public String responsableFullName;
+    private String responsableFullName;
     /**
      * Nome do solicitante
      */
-    public String requesterName;
+    @NonNull
+    private String requesterName;
     /**
      * Status da tarefa
      */
-    public TaskStatus taskStatus;
+    private TaskStatus taskStatus;
     /**
      * Status da solicitação
      */
-    public MyRequestKind requestStatus;
+    private MyRequestKind requestStatus;
     /**
      * Título da Solicitação
      */
-    public String title;
+    private String title;
     /**
      * Id da atividade
      */
-    public Long activityId;
+    @NonNull
+    private Integer activityId;
     /**
      * Passo
      */
-    public Long step;
+    @NonNull
+    private Integer step;
     /**
      * Número de pendências de uma solicitação
      */
-    public Long pendencyCount;
+    @NonNull
+    private Integer pendencyCount;
     /**
      * Estado da pendência em lote
      */
-    public PendencyResponseStatus responseStatus;
-    
-    /** 
-     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
-     */
-    public Task(Long processId, Long processInstanceId, String activity, Date startDate, String requesterName, Long activityId, Long step, Long pendencyCount, PendencyResponseStatus responseStatus) {
-        this.processId = processId;
-        this.processInstanceId = processInstanceId;
-        this.activity = activity;
-        this.startDate = startDate;
-        this.requesterName = requesterName;
-        this.activityId = activityId;
-        this.step = step;
-        this.pendencyCount = pendencyCount;
-        this.responseStatus = responseStatus;
-    }
+    @NonNull
+    private PendencyResponseStatus responseStatus;
+
 }

@@ -3,34 +3,35 @@ package br.com.senior.platform.workflow.pojos;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * Agrupamento
  */
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Group {
-    
+
     /**
      * Nome do agrupamento
      */
-    public Object name;
+    @NonNull
+    private Object name;
     /**
      * Lista de tarefas/solicitações do agrupamento
      */
-    public List<Task> tasks;
+    private List<Task> tasks;
     /**
      * Total de itens
      */
-    public Long total;
-    
-    /** 
-     * Construtor que possibilita a inicialização de todos os campos obrigatórios.
-     */
-    public Group(Object name, Long total) {
-        this.name = name;
-        this.total = total;
-    }
+    @NonNull
+    private Integer total;
 
 }
