@@ -472,6 +472,7 @@ public class WorkflowClientExample {
     private static String authenticate() throws ServiceException {
         printMessage("Login...");
         
+        // adicione estas variáveis de ambiente com seu usuário e senha ou substitua seus valores aqui
         final String username = System.getenv("SENIOR_USERNAME");
         final String password = System.getenv("PASS");
 
