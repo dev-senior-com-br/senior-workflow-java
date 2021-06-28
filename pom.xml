@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.senior</groupId>
-    <artifactId>senior-workflow-java</artifactId>
-    <version>0.4.0</version>
+    <artifactId>senior-platform-apps-java</artifactId>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <name>Senior Workflow SDK</name>
-    <description>Senior Workflow SDK</description>
-    <url>https://github.com/dev-senior-com-br/senior-workflow-java</url>
+    <name>Senior Platform Apps SDK</name>
+    <description>Conjunto APIs Java para se comunicar com alguns dos serviços da senior X Platform.</description>
+    <url>https://github.com/dev-senior-com-br/senior-platform-apps-java</url>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -24,7 +24,7 @@
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/dev-senior-com-br/senior-workflow-java/issues</url>
+        <url>https://github.com/dev-senior-com-br/senior-platform-apps-java/issues</url>
     </issueManagement>
 
     <licenses>
@@ -36,9 +36,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/dev-senior-com-br/senior-workflow-java.git</url>
-        <connection>scm:git:git@github.com:dev-senior-com-br/senior-workflow-java.git</connection>
-        <developerConnection>scm:git:git@github.com:dev-senior-com-br/senior-workflow-java.git</developerConnection>
+        <url>https://github.com/dev-senior-com-br/senior-platform-apps-java.git</url>
+        <connection>scm:git:git@github.com:dev-senior-com-br/senior-platform-apps-java.git</connection>
+        <developerConnection>scm:git:git@github.com:dev-senior-com-br/senior-platform-apps-java.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -207,28 +207,6 @@
             <version>2.1.0</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.6.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.11</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.6</version>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.30</version>
@@ -238,21 +216,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.12</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>1.6.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.threeten</groupId>
-            <artifactId>threetenbp</artifactId>
-            <version>1.4.4</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
         </dependency>
     </dependencies>
 
