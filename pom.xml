@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.senior</groupId>
     <artifactId>senior-platform-apps-java</artifactId>
-    <version>0.1.0</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>Senior Platform Apps SDK</name>
