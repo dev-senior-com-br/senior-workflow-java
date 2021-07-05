@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Direção da Ordenação
+ * Direção da ordenação.
  */
 public enum OrderDirection {
     /**

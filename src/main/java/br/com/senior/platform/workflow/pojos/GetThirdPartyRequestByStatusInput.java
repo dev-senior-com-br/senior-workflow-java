@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getThirdPartyRequestByStatus.
+ */
 @Getter
 @Setter
 @Builder
@@ -15,12 +18,12 @@ import lombok.Setter;
 public class GetThirdPartyRequestByStatusInput {
 
     /**
-     * Nome da Chave do Processo
+     * Nome da chave do processo
      */
     @NonNull
     private String processKey;
     /**
-     * Status da PendÊncia
+     * Status da pendência
      */
     @NonNull
     private PendencyType status;

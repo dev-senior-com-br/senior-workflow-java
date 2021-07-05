@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query findProcess.
+ */
 @Getter
 @Setter
 @Builder
@@ -15,7 +18,7 @@ import lombok.Setter;
 public class FindProcessInput {
 
     /**
-     * Filtra pelo id
+     * Identificador do processo
      */
     @NonNull
     private Integer id;

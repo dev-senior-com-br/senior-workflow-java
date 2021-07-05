@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getProcessInstance.
+ */
 @Getter
 @Setter
 @Builder
@@ -13,7 +16,7 @@ import lombok.Setter;
 public class GetProcessInstanceInput {
 
     /**
-     * Identificador da instância de Processo
+     * Identificador da instância do processo
      */
     @NonNull
     private Integer processInstance;

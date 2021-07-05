@@ -33,7 +33,7 @@ public class PendencyRequestParameters {
      */
     private String filterValue;
     /**
-     * Filtro do tipo de processo (embarcado ou não)
+     * Filtro do tipo de processo (integrado ou não)
      */
     private ProcessFilterType processFilterType;
 

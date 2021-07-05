@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Estado do upload do documento
+ * Estado do upload do documento.
  */
 public enum IntegrationStatus {
     /**

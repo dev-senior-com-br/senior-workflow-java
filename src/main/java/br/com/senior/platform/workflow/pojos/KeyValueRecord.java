@@ -7,7 +7,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Registro Genérico para Chave Valor
+ * Registro genérico para chave valor.
  */
 @Getter
 @Setter
@@ -16,12 +16,12 @@ import lombok.Setter;
 public class KeyValueRecord {
 
     /**
-     * Nome da Chave
+     * Nome da chave
      */
     @NonNull
     private String key;
     /**
-     * Valor
+     * Valor da chave
      */
     @NonNull
     private String value;

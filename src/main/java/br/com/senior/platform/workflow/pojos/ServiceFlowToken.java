@@ -9,6 +9,7 @@ import lombok.Setter;
 
 /**
  * Representa a chave de uma pendência de um processo. - Deprecado
+ * @see FlowToken
  */
 @Getter
 @Setter
@@ -18,17 +19,17 @@ import lombok.Setter;
 public class ServiceFlowToken {
 
     /**
-     * Identificador da Instância do Processo
+     * Identificador da instância do orocesso
      */
     @NonNull
     private Integer processInstanceID;
     /**
-     * Identificador da Etapa do Processo
+     * Identificador da etapa do processo
      */
     @NonNull
     private Integer step;
     /**
-     * Identificador da Atividade
+     * Identificador da atividade
      */
     @NonNull
     private Integer activityId;

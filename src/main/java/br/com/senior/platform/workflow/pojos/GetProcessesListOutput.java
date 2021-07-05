@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da query getProcessesList.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,7 +17,7 @@ import lombok.Setter;
 public class GetProcessesListOutput {
 
     /**
-     * Lista de Processos
+     * Lista de processos
      */
     private List<ServiceProcess> processes;
 

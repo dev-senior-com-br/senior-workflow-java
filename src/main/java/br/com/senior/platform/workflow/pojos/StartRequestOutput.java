@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da action startRequest.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,7 +15,7 @@ import lombok.Setter;
 public class StartRequestOutput {
     
     /**
-     * Instância de Processo criada
+     * Identificador da instância de processo criada
      */
     private Integer processInstanceID;
 

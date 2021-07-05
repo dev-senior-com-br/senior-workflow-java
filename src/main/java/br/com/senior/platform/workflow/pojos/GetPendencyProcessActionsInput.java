@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getPendencyProcessActions.
+ */
 @Getter
 @Setter
 @Builder
@@ -14,6 +17,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class GetPendencyProcessActionsInput {
 
+    /**
+     * Token com informações da etapa do fluxo
+     */
     @NonNull
     private ServiceFlowToken serviceFlowToken;
 

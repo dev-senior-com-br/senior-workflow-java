@@ -8,7 +8,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Ranking de Processos mais usados pelo usuário
+ * Ranking de Processos mais usados pelo usuário.
  */
 @Getter
 @Setter
@@ -18,22 +18,22 @@ import lombok.Setter;
 public class ProcessRanking {
 
     /**
-     * Identificador do Processo
+     * Identificador do processo
      */
     @NonNull
     private Integer processId;
     /**
-     * Versão Atual do Processo
+     * Versão atual do processo
      */
     @NonNull
     private Integer currentVersion;
     /**
-     * Nome do Processo
+     * Nome do processo
      */
     @NonNull
     private String processName;
     /**
-     * Tag agrupador de Processos
+     * Tag agrupador de processos
      */
     private String tag;
     /**

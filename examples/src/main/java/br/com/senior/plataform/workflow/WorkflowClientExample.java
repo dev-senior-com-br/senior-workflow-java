@@ -1,10 +1,16 @@
 package br.com.senior.platform.workflow;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 
 import br.com.senior.core.authentication.AuthenticationClient;
 import br.com.senior.core.authentication.pojos.LoginInput;
@@ -19,7 +25,7 @@ public class WorkflowClientExample {
     private static String accessToken;
     private static WorkflowClient workflowClient;
 
-    public static void main(String[] args) throws ServiceException {
+    public static void main(String[] args) throws ServiceException, IOException {
         accessToken = authenticate();
 
         workflowClient = new WorkflowClient(accessToken, Environment.HOMOLOG);
@@ -36,13 +42,20 @@ public class WorkflowClientExample {
         formData.put("retorno", "2021-06-28");
         formData.put("motivo", "Visita a cliente");
         
-        // inicia uma solicitação, criando uma instância do processo (também é possível utilizar o startProcess(processId))
+        // inicia uma solicitação, criando uma instância do processo
+        // também é possível utilizar o startProcess(processId) para a mesma finalidade
         int processInstanceId = startRequest(processId, formData);
         
-        // recupera lista de todos os processos
-        getProcessList();
+        // adiciona um anexo à solicitação criada
+        NewAttachmentOutput newAttachmentOutput = newAttachment();
+        uploadFile(newAttachmentOutput.getUploadUrl());
+        commitAttachment(newAttachmentOutput.getAttachment().getId());
+        linkAttachments(newAttachmentOutput.getAttachment().getId(), processInstanceId);
 
-        // recupera lista dos processos utilizados recentemente (o processo de exemplo chamado anteriormente deve constar nesta lista)
+        // recupera lista de todos os processos
+        getProcessesList();
+
+        // recupera lista dos processos utilizados recentemente
         getRankingProcesses();
 
         // recupera os dados do processo de exemplo
@@ -57,7 +70,8 @@ public class WorkflowClientExample {
         // recupera o histórico da solicitação criada
         getRequestHistoryTimeline(processInstanceId);
         
-        getThirdPartyRequestByStatus("1");
+        // lista as solicitações de aplicações terceiras
+        getThirdPartyRequestByStatus();
         
         // recupera todos os possíveis responsáveis
         getSubjects();
@@ -77,11 +91,6 @@ public class WorkflowClientExample {
         
         // altera o usuário responsável pela solicitação
         changePendencyUser(processInstanceId);
-        
-        // adiciona um anexo à solicitação criada
-        String attachmentId = newAttachment();
-        commitAttachment(attachmentId);
-        linkAttachments(attachmentId, processInstanceId);
         
         // responde uma pendência ou uma lista de pendências
         responsePendency(processInstanceId);
@@ -119,19 +128,52 @@ public class WorkflowClientExample {
         printMessage("Process Instance Id: " + output.getProcessInstanceID());
     }
     
-    private static void cancelProcessInstance(int processInstanceId) throws ServiceException {
-        printMessage("\ncancelProcessInstance...");
+    private static NewAttachmentOutput newAttachment() throws ServiceException {
+        printMessage("\nnewAttachment...");
         
-        CancelProcessInstanceInput payload = CancelProcessInstanceInput.builder()
-                .ids(Arrays.asList(processInstanceId))
-                .reason("Voo cancelado")
+        NewAttachmentInput payload = NewAttachmentInput.builder()
+                .name("foto_3x4.jpg")
+                .size(362990)
                 .build();
+
+        NewAttachmentOutput output = workflowClient.newAttachment(payload);
+
+        printMessage("Id: " + output.getAttachment().getId());
+        printMessage("uploadUrl: " + output.getUploadUrl());
         
-        workflowClient.cancelProcessInstance(payload);
+        return output;
+    }
+
+    private static void uploadFile(String uploadUrl) throws IOException {
+        try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
+            HttpPut httpPut = new HttpPut(uploadUrl);
+            
+            httpPut.setHeader("Content-type", "text/plain");
+            httpPut.setEntity(new StringEntity("My text file"));
+            
+            httpclient.execute(httpPut);
+        }
     }
     
-    private static void getProcessList() throws ServiceException {
-        printMessage("\ngetProcessList...");
+    private static void commitAttachment(String attachmentId) throws ServiceException {
+        printMessage("\ncommitAttachment...");
+        
+        workflowClient.commitAttachment(attachmentId);
+    }
+
+    private static void linkAttachments(String attachmentId, int processInstanceId) throws ServiceException {
+        printMessage("\nlinkAttachments...");
+        
+        LinkAttachmentsInput payload = LinkAttachmentsInput.builder()
+                .ids(Arrays.asList(attachmentId))
+                .processInstance(processInstanceId)
+                .build();
+
+        workflowClient.linkAttachments(payload);
+    }
+
+    private static void getProcessesList() throws ServiceException {
+        printMessage("\ngetProcessesList...");
         
         GetProcessesListInput payload = GetProcessesListInput.builder()
                 .serviceAction(ServiceType.AllProcesses)
@@ -203,11 +245,11 @@ public class WorkflowClientExample {
         output.getTimeline().forEach(entry -> printMessage(String.format("%s: %s", entry.getHistoryDate(), entry.getActionName())));
     }
     
-    private static void getThirdPartyRequestByStatus(String processKey) throws ServiceException {
+    private static void getThirdPartyRequestByStatus() throws ServiceException {
         printMessage("\ngetThirdPartyRequestByStatus...");
         
         GetThirdPartyRequestByStatusInput payload = GetThirdPartyRequestByStatusInput.builder()
-                .processKey(processKey)
+                .processKey("1")
                 .status(PendencyType.Pending)
                 .build();
 
@@ -215,29 +257,6 @@ public class WorkflowClientExample {
 
         printMessage("Total: " + output.getRequests().size());
         output.getRequests().forEach(request -> printMessage(String.format("Third party id: %s", request.getThirdpartyId())));
-    }
-    
-    private static void searchTasks(String... processId) throws ServiceException {
-        printMessage("\nsearchTasks...");
-
-        Order order = Order.builder()
-                .field(OrderField.EXPIRATION_DATE)
-                .direction(OrderDirection.DESC)
-                .build();
-        
-        SearchTasksFilter filter = SearchTasksFilter.builder()
-                .processes(Arrays.asList(processId))
-                .build();
-        
-        SearchTasksInput payload = SearchTasksInput.builder()
-                .orders(Arrays.asList(order))
-                .filter(filter)
-                .build();
-
-        SearchTasksOutput output = workflowClient.searchTasks(payload);
-
-        printMessage("Total: " + output.getTotal());
-        output.getTasks().forEach(task -> printMessage(String.format("Id: %s | Atividade: %s", task.getActivityId(), task.getActivity())));
     }
     
     private static void getSubjects() throws ServiceException {
@@ -288,25 +307,29 @@ public class WorkflowClientExample {
         output.getSubjects().forEach(subject -> printMessage(String.format("Code: %s | Nome: %s", subject.getUserCode(), subject.getName())));
     }
     
-    private static void getPendencyProcessActions(int instanceId) throws ServiceException {
-        printMessage("\ngetPendencyProcessActions...");
-        
-        ServiceFlowToken serviceFlowToken = ServiceFlowToken.builder()
-                .processInstanceID(instanceId)
-                .step(1)
-                .activityId(2)
+    private static void searchTasks(String... processId) throws ServiceException {
+        printMessage("\nsearchTasks...");
+
+        Order order = Order.builder()
+                .field(OrderField.EXPIRATION_DATE)
+                .direction(OrderDirection.DESC)
                 .build();
         
-        GetPendencyProcessActionsInput payload = GetPendencyProcessActionsInput.builder()
-                .serviceFlowToken(serviceFlowToken)
+        SearchTasksFilter filter = SearchTasksFilter.builder()
+                .processes(Arrays.asList(processId))
+                .build();
+        
+        SearchTasksInput payload = SearchTasksInput.builder()
+                .orders(Arrays.asList(order))
+                .filter(filter)
                 .build();
 
-        GetPendencyProcessActionsOutput output = workflowClient.getPendencyProcessActions(payload);
+        SearchTasksOutput output = workflowClient.searchTasks(payload);
 
-        printMessage("Total: " + output.getPendencyProcessAction().size());
-        output.getPendencyProcessAction().forEach(action -> printMessage(String.format("Ação: %s", action.getName())));
+        printMessage("Total: " + output.getTotal());
+        output.getTasks().forEach(task -> printMessage(String.format("Id: %s | Atividade: %s", task.getActivityId(), task.getActivity())));
     }
-    
+
     private static void getMyPendencies() throws ServiceException {
         printMessage("\ngetMyPendencies...");
         
@@ -325,38 +348,47 @@ public class WorkflowClientExample {
         output.getPendencies().forEach(pendency -> 
             printMessage(String.format("Descrição: %s | Expiração: %s", pendency.getDescription(), pendency.getExpirationDate())));
     }
-    
-    private static String newAttachment() throws ServiceException {
-        printMessage("\nnewAttachment...");
+
+    private static void getPendencyProcessActions(int instanceId) throws ServiceException {
+        printMessage("\ngetPendencyProcessActions...");
         
-        NewAttachmentInput payload = NewAttachmentInput.builder()
-                .name("foto_3x4.jpg")
-                .size(362990)
+        ServiceFlowToken serviceFlowToken = ServiceFlowToken.builder()
+                .processInstanceID(instanceId)
+                .step(1)
+                .activityId(2)
+                .build();
+        
+        GetPendencyProcessActionsInput payload = GetPendencyProcessActionsInput.builder()
+                .serviceFlowToken(serviceFlowToken)
                 .build();
 
-        NewAttachmentOutput output = workflowClient.newAttachment(payload);
+        GetPendencyProcessActionsOutput output = workflowClient.getPendencyProcessActions(payload);
 
-        printMessage("Id: " + output.getAttachment().getId());
-        printMessage("uploadUrl: " + output.getUploadUrl());
-        
-        return output.getAttachment().getId();
-    }
-    
-    private static void commitAttachment(String attachmentId) throws ServiceException {
-        printMessage("\ncommitAttachment...");
-        
-        workflowClient.commitAttachment(attachmentId);
+        printMessage("Total: " + output.getPendencyProcessAction().size());
+        output.getPendencyProcessAction().forEach(action -> printMessage(String.format("Ação: %s", action.getName())));
     }
 
-    private static void linkAttachments(String attachmentId, int processInstanceId) throws ServiceException {
-        printMessage("\nlinkAttachments...");
+    private static void changePendencyUser(int processInstanceId) throws ServiceException {
+        printMessage("\nchangePendencyUser...");
         
-        LinkAttachmentsInput payload = LinkAttachmentsInput.builder()
-                .ids(Arrays.asList(attachmentId))
-                .processInstance(processInstanceId)
+        ServiceFlowToken serviceFlowToken = ServiceFlowToken.builder()
+                .processInstanceID(processInstanceId)
+                .step(1)
+                .activityId(2)
+                .build();
+        
+        ServiceSubject subject = ServiceSubject.builder()
+                .subjectKind(SubjectKind.User)
+                .userCode(1)
+                .name("Exemplo")
+                .build();
+        
+        ChangePendencyUserInput payload = ChangePendencyUserInput.builder()
+                .serviceFlowTokens(Arrays.asList(serviceFlowToken))
+                .subject(subject)
                 .build();
 
-        workflowClient.linkAttachments(payload);
+        workflowClient.changePendencyUser(payload);
     }
     
     private static void responsePendency(int processInstanceId) throws ServiceException {
@@ -397,28 +429,16 @@ public class WorkflowClientExample {
 
         workflowClient.batchPendenciesResponse(payload);
     }
-    
-    private static void changePendencyUser(int processInstanceId) throws ServiceException {
-        printMessage("\nchangePendencyUser...");
-        
-        ServiceFlowToken serviceFlowToken = ServiceFlowToken.builder()
-                .processInstanceID(processInstanceId)
-                .step(1)
-                .activityId(2)
-                .build();
-        
-        ServiceSubject subject = ServiceSubject.builder()
-                .subjectKind(SubjectKind.User)
-                .userCode(1)
-                .name("Exemplo")
-                .build();
-        
-        ChangePendencyUserInput payload = ChangePendencyUserInput.builder()
-                .serviceFlowTokens(Arrays.asList(serviceFlowToken))
-                .subject(subject)
-                .build();
 
-        workflowClient.changePendencyUser(payload);
+    private static void cancelProcessInstance(int processInstanceId) throws ServiceException {
+        printMessage("\ncancelProcessInstance...");
+        
+        CancelProcessInstanceInput payload = CancelProcessInstanceInput.builder()
+                .ids(Arrays.asList(processInstanceId))
+                .reason("Voo cancelado")
+                .build();
+        
+        workflowClient.cancelProcessInstance(payload);
     }
     
     private static String authenticate() throws ServiceException {
@@ -442,3 +462,4 @@ public class WorkflowClientExample {
         System.out.println(message);
     }
 }
+

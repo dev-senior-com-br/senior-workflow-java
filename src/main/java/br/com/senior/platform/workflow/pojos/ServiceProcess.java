@@ -21,22 +21,22 @@ import lombok.Setter;
 public class ServiceProcess {
 
     /**
-     * Identificador do Processo
+     * Identificador do processo
      */
     @NonNull
     private Integer processId;
     /**
-     * Versão Atual do Processo
+     * Versão atual do processo
      */
     @NonNull
     private Integer currentVersion;
     /**
-     * Versão Publicada do Processo
+     * Versão publicada do processo
      */
     @NonNull
     private Integer publishedVersion;
     /**
-     * Nome do Processo
+     * Nome do processo
      */
     @NonNull
     private String processName;
@@ -51,7 +51,7 @@ public class ServiceProcess {
     @NonNull
     private Boolean changed;
     /**
-     * Nome do Arquivo do Processo
+     * Nome do arquivo do processo
      */
     @NonNull
     private String fileName;
@@ -75,7 +75,7 @@ public class ServiceProcess {
      */
     private Boolean active;
     /**
-     * Se o processo é embarcado
+     * Se o processo é integrado
      */
     private Boolean embedded;
     /**
@@ -83,7 +83,7 @@ public class ServiceProcess {
      */
     private Boolean simple;
     /**
-     * Tag agrupador de Processos
+     * Tag agrupadora de Processos
      */
     private String tag;
     /**

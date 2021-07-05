@@ -7,12 +7,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da query getPendencyProcessActions.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetPendencyProcessActionsOutput {
 
+    /**
+     * Lista de ações da pendência disponíveis para execução
+     */
     private List<ProcessAction> pendencyProcessAction;
 
 }

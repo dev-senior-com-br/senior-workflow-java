@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da action startProcess.
+ */
 @Getter
 @Setter
 @Builder
@@ -19,34 +22,35 @@ public class StartProcessInput {
      */
     private Integer processInstanceID;
     /**
-     * Caso seja passado o processInstanceId, indica que a geração do record deve ser feita pelo BPM e não foi gerenciada externamente.
+     * Caso seja passado o processInstanceId, indica que a geração do record deve 
+     * ser feita pelo BPM e não foi gerenciada externamente.
      */
     private Boolean generateRecord;
     /**
-     * Número do processo
+     * Identificador do processo
      */
     @NonNull
     private Integer processId;
     /**
-     * Versão do Processo
+     * Versão do processo
      */
     private Integer processVersion;
     /**
-     * Variáveis de Negócio do Processo
+     * Json com variáveis de negócio do processo. Ex: { "businessData": { "campo1": "valor1", "campo2": 2 }}
      */
     @NonNull
     private String businessData;
     /**
-     * Informação para Fluxo de Execução do Processo
+     * Informação para Fluxo de Execução do processo
      */
     @NonNull
     private FlowExecutionData flowExecutionData;
     /**
-     * String de autorização executados da tarefas do workflow
+     * String de autorização das tarefas do workflow
      */
     private String authorization;
     /**
-     * Título opcional da solicitação
+     * Título da solicitação
      */
     private String title;
     /**
@@ -54,7 +58,8 @@ public class StartProcessInput {
      */
     private String requester;
     /**
-     * Se existir um serviço externo antes da primeira etapa, o mesmo deve sobrescrever as variáveis enviadas no businessData
+     * Se existir um serviço externo antes da primeira etapa, o mesmo deve 
+     * sobrescrever as variáveis enviadas no businessData
      */
     private Boolean externalServiceOverrideBusinessData;
 

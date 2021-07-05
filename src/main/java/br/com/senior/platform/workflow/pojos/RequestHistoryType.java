@@ -1,39 +1,39 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Tipo de entrada no histórico de um solicitação
+ * Tipo de entrada no histórico de uma solicitação.
  */
 public enum RequestHistoryType {
     /**
-     * Solicitação Iniciada
+     * Solicitação iniciada
      */
     STARTED,
     /**
-     * Inclusão de Comentário
+     * Inclusão de comentário
      */
     COMMENT,
     /**
-     * Anexo Incluído
+     * Anexo incluído
      */
     ATTACHMENT_ADDED,
     /**
-     * Anexo Removido
+     * Anexo removido
      */
     ATTACHMENT_REMOVED,
     /**
-     * Gestor Processos alterou o responsável
+     * Gestor do processos alterou o responsável
      */
     CHANGE_RESPONSIBLE,
     /**
-     * Solicitação Cancelada
+     * Solicitação cancelada
      */
     CANCEL_PENDENCY,
     /**
-     * Pendência da Solicitação Respondida
+     * Pendência da solicitação respondida
      */
     RESPONSE_PENDENCY,
     /**
-     * Solicitação Encerrada
+     * Solicitação encerrada
      */
     FINISHED
 }

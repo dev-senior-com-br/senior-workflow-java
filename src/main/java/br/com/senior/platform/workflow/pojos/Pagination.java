@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Paginação
+ * Paginação.
  */
 @Getter
 @Setter
@@ -14,11 +14,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Pagination {
     /**
-     * Faixa inicial da consulta
+     * Índice inicial da consulta
      */
     private Integer start;
     /**
-     * Quantidade de linhas da consulta
+     * Quantidade de itens da consulta
      */
     private Integer limit;
 }

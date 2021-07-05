@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getProcessesList.
+ */
 @Getter
 @Setter
 @Builder
@@ -17,7 +20,7 @@ import lombok.Setter;
 public class GetProcessesListInput {
 
     /**
-     * Tipo de Ação que indica quais processos serão listados
+     * Tipo de ação que indica quais processos serão listados
      */
     @NonNull
     private ServiceType serviceAction;
@@ -26,7 +29,7 @@ public class GetProcessesListInput {
      */
     private ProcessFilterType processFilterType;
     /**
-     * Tag para filtro
+     * Filtro por tag
      */
     private String tagFilter;
     /**

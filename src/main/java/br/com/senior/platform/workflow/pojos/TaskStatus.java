@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Status da tarefa
+ * Status da tarefa.
  */
 public enum TaskStatus {
     /**

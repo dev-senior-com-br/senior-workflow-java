@@ -10,7 +10,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Linha do tempo com o registro de ações e observações de uma solicitação
+ * Linha do tempo com o registro de ações e observações de uma solicitação.
  */
 @Getter
 @Setter
@@ -20,17 +20,17 @@ import lombok.Setter;
 public class RequestHistoryTimelineEntry {
     
     /**
-     * Identificador da Instância do Processo
+     * Identificador da instância do processo
      */
     @NonNull
     private Integer processInstanceId;
     /**
-     * Tipo de Entrada Histórico
+     * Tipo de entrada histórica
      */
     @NonNull
     private RequestHistoryType historyType;
     /**
-     * Data do Histórico
+     * Data do histórico
      */
     @NonNull
     private Instant historyDate;
@@ -44,11 +44,11 @@ public class RequestHistoryTimelineEntry {
      */
     private String impersonatedUserName;
     /**
-     * Nome da Tarefa
+     * Nome da tarefa
      */
     private String taskName;
     /**
-     * Nome ação Executada
+     * Nome da ação executada
      */
     private String actionName;
     /**

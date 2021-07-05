@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Filtro de tarefas
+ * Filtro de tarefas.
  */
 @Getter
 @Setter

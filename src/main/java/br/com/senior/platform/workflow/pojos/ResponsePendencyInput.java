@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da action responsePendency.
+ */
 @Getter
 @Setter
 @Builder
@@ -15,7 +18,7 @@ import lombok.Setter;
 public class ResponsePendencyInput {
 
     /**
-     * Token do Processo
+     * Token do processo
      */
     @NonNull
     private ServiceFlowToken serviceFlowToken;

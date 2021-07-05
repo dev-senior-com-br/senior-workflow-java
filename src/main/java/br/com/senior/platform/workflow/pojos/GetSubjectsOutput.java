@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da query getSubjects.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,11 +21,11 @@ public class GetSubjectsOutput {
      */
     private List<ServiceSubject> subjects;
     /**
-     * Total de Itens
+     * Total de itens
      */
     private Integer totalElements;
     /**
-     * Total de Páginas
+     * Total de páginas
      */
     private Integer totalPages;
 

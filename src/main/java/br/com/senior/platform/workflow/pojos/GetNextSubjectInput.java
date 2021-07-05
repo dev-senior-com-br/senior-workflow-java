@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getNextSubject.
+ */
 @Getter
 @Setter
 @Builder
@@ -20,7 +23,7 @@ public class GetNextSubjectInput {
     @NonNull
     private ServiceFlowToken serviceFlowToken;
     /**
-     * Nome da Sequência do Processo Modelador
+     * Nome da sequência do Processo Modelador
      */
     @NonNull
     private String sequenceName;

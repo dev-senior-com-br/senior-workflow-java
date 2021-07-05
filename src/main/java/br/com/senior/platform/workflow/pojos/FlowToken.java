@@ -8,7 +8,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Assinatura corrigindo o processInstanceID presente em serviceFlowToken
+ * Representação corrigindo o processInstanceID presente no ServiceFlowToken.
  */
 @Getter
 @Setter
@@ -18,7 +18,7 @@ import lombok.Setter;
 public class FlowToken {
 
     /**
-     * Identificador da Instância do Processo
+     * Identificador da instância do processo
      */
     @NonNull
     private Integer processInstanceId;
@@ -28,7 +28,7 @@ public class FlowToken {
     @NonNull
     private Integer step;
     /**
-     * Identificador da Atividade
+     * Identificador da atividade
      */
     @NonNull
     private Integer activityId;

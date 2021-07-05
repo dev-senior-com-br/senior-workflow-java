@@ -8,7 +8,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Quantidade de eventos de serviços externos por tipos
+ * Quantidade de eventos de serviços externos por tipos.
  */
 @Getter
 @Setter

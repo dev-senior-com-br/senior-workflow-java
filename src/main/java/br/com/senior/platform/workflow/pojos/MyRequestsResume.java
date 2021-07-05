@@ -11,7 +11,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Resumo das Solicitações
+ * Resumo de uma solicitação.
  */
 @Getter
 @Setter
@@ -21,62 +21,62 @@ import lombok.Setter;
 public class MyRequestsResume {
 
     /**
-     * Instância de Processo
+     * Identificador da instância do processo
      */
     @NonNull
     private Integer processInstanceId;
     /**
-     * Nome do Processo
+     * Nome do processo
      */
     @NonNull
     private String processName;
     /**
-     * Criação da Solicitação
+     * Data de criação da soliciatção
      */
     @NonNull
     private Instant startDate;
     /**
-     * Encerramento da Solicitação
+     * Data de enceramento da solicitação
      */
     @NonNull
     private Instant endDate;
     /**
-     * Status
+     * Status da solicitação
      */
     @NonNull
     private String status;
     /**
-     * Nome da Atividade Atual
+     * Nome da atividade atual
      */
     @NonNull
     private String activityName;
     /**
-     * Usuário Atual da Tarefa
+     * Usuário atual da tarefa
      */
     @NonNull
     private String taskUser;
     /**
-     * Data de Expiração
+     * Data de expiração
      */
     @NonNull
     private Instant expirationDate;
     /**
-     * Identificador do Processo
+     * Identificador do processo
      */
     @NonNull
     private Integer processId;
     /**
-     * Versão do Processo
+     * Versão do processo
      */
     @NonNull
     private Integer processVersion;
     /**
-     * Indica se o processo desta solicitação é embarcado
+     * Indica se o processo desta solicitação é integrado ou não
      */
     @NonNull
     private Boolean embedded;
     /**
-     * Detalhes da Solicitação
+     * Detalhes da solicitação
      */
     @NonNull
     private String detail;

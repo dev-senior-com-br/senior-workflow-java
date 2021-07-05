@@ -9,6 +9,9 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+/**
+ * Objeto de entrada da action cancelProcessInstance.
+ */
 @Getter
 @Setter
 @Builder
@@ -22,7 +25,8 @@ public class CancelProcessInstanceInput {
     @NonNull
     private List<Integer> ids;
     /**
-     * Usuário responsável pelo cancelamento. Deve ser informado quando for uma aplicação, quando não for aplicação esse campo é ignorado
+     * Usuário responsável pelo cancelamento. Deve ser informado quando for 
+     * uma aplicação, quando não for aplicação esse campo é ignorado
      */
     private String user;
     /**

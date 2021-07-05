@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Tipos de requisição
+ * Tipos de requisição.
  */
 public enum MyRequestKind {
     /**

@@ -9,6 +9,9 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+/**
+ * Objeto de entrada da action changePendencyUser.
+ */
 @Getter
 @Setter
 @Builder
@@ -17,12 +20,12 @@ import lombok.Builder;
 public class ChangePendencyUserInput {
 
     /**
-     * Lista dos identificadores da tarefas
+     * Lista dos identificadores das tarefas
      */
     @NonNull
     private List<ServiceFlowToken> serviceFlowTokens;
     /**
-     * Usuário, grupo ou papel alterar o responsável
+     * Usuário, grupo ou papel responsável
      */
     @NonNull
     private ServiceSubject subject;

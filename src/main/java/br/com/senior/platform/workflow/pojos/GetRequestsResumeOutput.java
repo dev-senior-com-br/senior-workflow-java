@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da query getRequestsResume.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,7 +21,7 @@ public class GetRequestsResumeOutput {
      */
     private List<MyRequestsResume> requestsResume;
     /**
-     * Número Total de instância de processos
+     * Total de instância de processos
      */
     private Integer total;
 

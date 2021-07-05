@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Tipo do processo
+ * Tipo do processo.
  */
 public enum ProcessFilterType {
     /**

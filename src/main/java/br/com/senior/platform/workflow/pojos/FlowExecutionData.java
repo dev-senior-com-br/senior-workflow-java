@@ -8,7 +8,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Dados para a execução do fluxo
+ * Dados para a execução do fluxo.
  */
 @Getter
 @Setter

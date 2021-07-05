@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getMyPendencies.
+ */
 @Getter
 @Setter
 @Builder
@@ -13,6 +16,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class GetMyPendenciesInput {
 
+    /**
+     * Parâmetros de filtro para a consulta
+     */
     private PendencyRequestParameters pendencyRequestParameters;
 
 }

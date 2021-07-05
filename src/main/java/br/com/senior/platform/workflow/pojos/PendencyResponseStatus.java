@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Estado da pendência
+ * Estado da pendência.
  */
 public enum PendencyResponseStatus {
     /**

@@ -10,7 +10,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Tarefa
+ * Representa uma tarefa de uma instância de processo.
  */
 @Getter
 @Setter
@@ -19,7 +19,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Task {
     /**
-     * Id do processo
+     * Identificador do processo
      */
     @NonNull
     private Integer processId;
@@ -28,7 +28,7 @@ public class Task {
      */
     private String processName;
     /**
-     * Id da instância do processo
+     * Identificador da instância do processo
      */
     @NonNull
     private Integer processInstanceId;
@@ -76,16 +76,16 @@ public class Task {
      */
     private MyRequestKind requestStatus;
     /**
-     * Título da Solicitação
+     * Título da solicitação
      */
     private String title;
     /**
-     * Id da atividade
+     * Identificador da atividade
      */
     @NonNull
     private Integer activityId;
     /**
-     * Passo
+     * Identificador da etapa
      */
     @NonNull
     private Integer step;
@@ -95,7 +95,7 @@ public class Task {
     @NonNull
     private Integer pendencyCount;
     /**
-     * Estado da pendência em lote
+     * Status da pendência
      */
     @NonNull
     private PendencyResponseStatus responseStatus;

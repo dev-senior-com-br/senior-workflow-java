@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Tipo de ordenação
+ * Tipo de ordenação.
  */
 public enum OrderField {
     /**

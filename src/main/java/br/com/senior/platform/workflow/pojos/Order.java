@@ -7,7 +7,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Ordenação
+ * Ordenação.
  */
 @Getter
 @Setter

@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Representação de uma ação de um processo ou etapa do processo.
+ */
 @Getter
 @Setter
 @Builder

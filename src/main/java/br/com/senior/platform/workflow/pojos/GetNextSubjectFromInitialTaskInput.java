@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getNextSubjectFromInitialTask.
+ */
 @Getter
 @Setter
 @Builder
@@ -17,17 +20,17 @@ import lombok.Setter;
 public class GetNextSubjectFromInitialTaskInput {
 
     /**
-     * Identificador do Processo
+     * Identificador do processo
      */
     @NonNull
     private Integer processId;
     /**
-     * Versão do Processo
+     * Versão do processo
      */
     @NonNull
     private Integer processVersion;
     /**
-     * Nome da Sequência do Processo Modelador
+     * Nome da sequência do Processo Modelador
      */
     @NonNull
     private String sequenceName;

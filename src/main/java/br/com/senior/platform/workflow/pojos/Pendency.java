@@ -10,7 +10,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Representa uma pendência de um processo
+ * Representa uma pendência de um processo.
  */
 @Getter
 @Setter

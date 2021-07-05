@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da query getThirdPartyRequestByStatus.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,7 +17,7 @@ import lombok.Setter;
 public class GetThirdPartyRequestByStatusOutput {
 
     /**
-     * Solicitações Terceiras
+     * Solicitações terceiras
      */
     private List<ThirdpartyRequestResume> requests;
 

@@ -1,7 +1,7 @@
 package br.com.senior.platform.workflow.pojos;
 
 /**
- * Representa qual tipo de retorno o serviço terá
+ * Representa qual tipo de retorno o serviço terá.
  */
 public enum ServiceType {
     /**
@@ -17,7 +17,7 @@ public enum ServiceType {
      */
     AllProcesses,
     /**
-     * Processos que o usuário pode editar ou visualizar, levando na propriedade
+     * Processos que o usuário pode editar ou visualizar
      */
     UserGrantedOrEditProcesses
 }

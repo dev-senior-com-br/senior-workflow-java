@@ -8,7 +8,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Resumo das Solicitações com Integração Terceira
+ * Resumo das solicitações com integração terceira
  */
 @Getter
 @Setter

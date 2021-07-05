@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getRequestsResume.
+ */
 @Getter
 @Setter
 @Builder
@@ -16,15 +19,15 @@ import lombok.Setter;
 public class GetRequestsResumeInput {
 
     /**
-     * Faixa inicial da consulta
+     * Índice inicial da consulta
      */
     private Integer start;
     /**
-     * Quantidade de linhas da consulta
+     * Quantidade de itens da consulta
      */
     private Integer limit;
     /**
-     * Filtro com lista de processos separado por virgula
+     * Filtro com lista de identificadores de processos
      */
     private List<Integer> filterProcess;
     /**
@@ -32,10 +35,16 @@ public class GetRequestsResumeInput {
      */
     private String filterValue;
     /**
-     * Filtro por status
+     * Filtro por status da solicitação
      */
     private List<MyRequestKind> filter;
+    /**
+     * Lista com tipos de ordenação informando campo e tipo (asc ou desc)
+     */
     private List<KeyValueRecord> orders;
+    /**
+     * Situação atual da solicitação
+     */
     private ReportTaskExpirationStatus situation;
 
 }

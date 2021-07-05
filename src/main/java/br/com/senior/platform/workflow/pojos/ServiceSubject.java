@@ -8,7 +8,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Representa um usuário ou grupo.
+ * Representa diferentes tipos de usuário.
  */
 @Getter
 @Setter
@@ -17,10 +17,19 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ServiceSubject {
 
+    /**
+     * Código do usuário
+     */
     @NonNull
     private Integer userCode;
+    /**
+     * Nome do usuário
+     */
     @NonNull
     private String name;
+    /**
+     * Tipo do usuário
+     */
     @NonNull
     private SubjectKind subjectKind;
 

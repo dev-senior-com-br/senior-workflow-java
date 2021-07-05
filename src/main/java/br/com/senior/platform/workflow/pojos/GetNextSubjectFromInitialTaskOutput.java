@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da query getNextSubjectFromInitialTask.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,7 +17,7 @@ import lombok.Setter;
 public class GetNextSubjectFromInitialTaskOutput {
 
     /**
-     * sujeitos que podem receber a atribuição
+     * Sujeitos que podem receber a atribuição
      */
     private List<ServiceSubject> subjects;
     /**

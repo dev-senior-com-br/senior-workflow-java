@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da action newAttachment.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,7 +18,7 @@ public class NewAttachmentOutput {
      */
     private ServiceAttachment attachment;
     /**
-     * URL para o anexo
+     * URL na qual o upload do arquivo poderá ser realizado
      */
     private String uploadUrl;
 }

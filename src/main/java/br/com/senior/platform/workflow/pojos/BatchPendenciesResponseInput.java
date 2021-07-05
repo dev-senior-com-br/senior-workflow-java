@@ -9,6 +9,9 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+/**
+ * Objeto de entrada da action batchPendenciesResponse.
+ */
 @Getter
 @Setter
 @Builder

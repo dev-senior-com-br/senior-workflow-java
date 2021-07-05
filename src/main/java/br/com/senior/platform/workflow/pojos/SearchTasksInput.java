@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query searchTasks.
+ */
 @Getter
 @Setter
 @Builder

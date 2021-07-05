@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da query getSubjects.
+ */
 @Getter
 @Setter
 @Builder
@@ -23,7 +26,7 @@ public class GetSubjectsInput {
      */
     private Integer pageSize;
     /**
-     * filtro pelo nome
+     * Filtro pelo nome
      */
     private String nameFilter;
     /**

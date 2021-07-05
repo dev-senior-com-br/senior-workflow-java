@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Objeto de retorno da query getNextSubject.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

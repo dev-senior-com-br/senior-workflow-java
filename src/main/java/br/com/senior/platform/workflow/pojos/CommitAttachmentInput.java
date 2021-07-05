@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+/**
+ * Objeto de entrada da action commitAttachment.
+ */
 @Getter
 @Setter
 @Builder
